@@ -1,0 +1,75 @@
+<html>
+
+<head>
+	<script src="js/jquery-2.2.0.js"></script>
+	<style>
+		img {
+			height: auto; 
+    		width: auto; 
+    		max-width: 200px; 
+    		max-height: 200px;
+		}
+	</style>
+
+</head>
+<body>
+
+
+<div id="main">
+
+</div>
+
+
+<script type="text/javascript">
+
+	var catNameArray = ["Morris", "Wanane"];
+	var counter = [];
+
+	for (var i = 0; i < catNameArray.length; i++) {
+		counter[i] = 0;
+		console.log(counter);
+	}
+
+	var cats = document.getElementById('main');
+	var catsHTML = "";
+	for (var i = 0; i < catNameArray.length; i++) {
+
+		var currentCat = 'cat' + i;
+
+		console.log(currentCat);
+		catsHTML = catsHTML + "<div id=cat" + i + "area><img class=cat src=cat" + i + ".jpg id=" + catNameArray[i] + "></div>";
+
+	};
+		cats.innerHTML = catsHTML;
+
+	for (var i = 0; i < catNameArray.length; i++) {
+		//counter[i] = 0;
+		//var i = 0;
+		var num = counter[i];
+		//var counterName = "counter" + catNameArray[i];
+
+		var elem = document.createElement('div');
+		elem.innerHTML = catNameArray[i] + ": 0";
+		elem.id = "counter" + i;
+		console.log(elem.id);
+		
+		var elem1 = document.getElementById(catNameArray[i]);
+		elem1.addEventListener('click', (function(numCopy, elemInner, kitty) {
+			
+			return function() {
+				numCopy = numCopy + 1;
+				elemInner.textContent = kitty + ": " + numCopy;
+			};
+
+		})(num, elem, catNameArray[i]));
+
+		cats.appendChild(elem);
+	};
+
+	
+	
+</script>
+
+
+</body>
+</html>
